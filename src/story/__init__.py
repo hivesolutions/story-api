@@ -35,5 +35,7 @@ __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
 from . import base
+from . import object
 
 from .base import BASE_URL, Api
+from .object import ObjectApi

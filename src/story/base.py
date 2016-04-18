@@ -39,11 +39,16 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
+from . import object
+
 BASE_URL = "https://story.bemisc.com/api/"
 """ The default base url to be used when no other
 base url value is provided to the constructor """
 
-class Api(appier.Api):
+class Api(
+    appier.Api,
+    object.ObjectApi
+):
     """
     Implementation of the Story API specification
     for a simplified python client usage.

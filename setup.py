@@ -51,7 +51,8 @@ setuptools.setup(
     url = "http://story_api.hive.pt",
     zip_safe = False,
     packages = [
-        "story"
+        "story",
+        "story.scripts"
     ],
     package_dir = {
         "" : os.path.normpath("src")

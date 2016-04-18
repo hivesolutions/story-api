@@ -19,9 +19,6 @@
 # You should have received a copy of the Apache License along with
 # Hive Story API. If not, see <http://www.apache.org/licenses/>.
 
-__author__ = "João Magalhães <joamag@hive.pt>"
-""" The author(s) of the module """
-
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -37,39 +34,6 @@ __copyright__ = "Copyright (c) 2008-2016 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-import appier
+from . import creator
 
-from . import base
-
-class StoryApp(appier.WebApp):
-
-    def __init__(self, *args, **kwargs):
-        appier.WebApp.__init__(
-            self,
-            name = "story",
-            *args, **kwargs
-        )
-
-    @appier.route("/", "GET")
-    def index(self):
-        return self.ping()
-
-    @appier.route("/ping", "GET")
-    def ping(self):
-        api = self.get_api()
-        result = api.ping()
-        return result
-
-    @appier.route("/objects", "GET")
-    def objects(self):
-        api = self.get_api()
-        result = api.list_objects()
-        return result
-
-    def get_api(self):
-        api = base.get_api()
-        return api
-
-if __name__ == "__main__":
-    app = StoryApp()
-    app.serve()
+from .creator import create

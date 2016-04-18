@@ -38,38 +38,21 @@ __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
 import appier
+import story
 
-from . import base
-
-class StoryApp(appier.WebApp):
-
-    def __init__(self, *args, **kwargs):
-        appier.WebApp.__init__(
-            self,
-            name = "story",
-            *args, **kwargs
-        )
-
-    @appier.route("/", "GET")
-    def index(self):
-        return self.ping()
-
-    @appier.route("/ping", "GET")
-    def ping(self):
-        api = self.get_api()
-        result = api.ping()
-        return result
-
-    @appier.route("/objects", "GET")
-    def objects(self):
-        api = self.get_api()
-        result = api.list_objects()
-        return result
-
-    def get_api(self):
-        api = base.get_api()
-        return api
+def create(*args, **kwargs):
+    api = story.Api()
+    return api.create_object(kwargs)
 
 if __name__ == "__main__":
-    app = StoryApp()
-    app.serve()
+    name = appier.conf("NAME", "untitled")
+    path = appier.conf("PATH", None)
+
+    if not path:
+        raise appier.OperationalError(message = "No path defined")
+
+    file = open(path, "rb")
+    kwargs = dict(name = name, file = file)
+
+    result = create(**kwargs)
+    print(result)

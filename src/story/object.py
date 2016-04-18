@@ -37,39 +37,17 @@ __copyright__ = "Copyright (c) 2008-2016 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-import appier
+class ObjectApi(object):
 
-from . import base
-
-class StoryApp(appier.WebApp):
-
-    def __init__(self, *args, **kwargs):
-        appier.WebApp.__init__(
-            self,
-            name = "story",
-            *args, **kwargs
+    def list_objects(self, *args, **kwargs):
+        url = self.base_url + "objects"
+        contents = self.get(
+            url,
+            **kwargs
         )
+        return contents
 
-    @appier.route("/", "GET")
-    def index(self):
-        return self.ping()
-
-    @appier.route("/ping", "GET")
-    def ping(self):
-        api = self.get_api()
-        result = api.ping()
-        return result
-
-    @appier.route("/objects", "GET")
-    def objects(self):
-        api = self.get_api()
-        result = api.list_objects()
-        return result
-
-    def get_api(self):
-        api = base.get_api()
-        return api
-
-if __name__ == "__main__":
-    app = StoryApp()
-    app.serve()
+    def create_object(self, payload):
+        url = self.base_url + "objects"
+        contents = self.post(url, data_m = payload)
+        return contents
