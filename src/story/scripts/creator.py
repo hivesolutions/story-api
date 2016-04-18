@@ -37,6 +37,9 @@ __copyright__ = "Copyright (c) 2008-2016 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import os
+import pprint
+
 import appier
 import story
 
@@ -46,13 +49,13 @@ def create(*args, **kwargs):
 
 if __name__ == "__main__":
     name = appier.conf("NAME", "untitled")
-    path = appier.conf("PATH", None)
+    file_path = appier.conf("FILE_PATH", None)
 
-    if not path:
-        raise appier.OperationalError(message = "No path defined")
+    if not file_path or not os.path.exists(file_path):
+        raise appier.OperationalError(message = "No path defined or path invalid")
 
-    file = open(path, "rb")
+    file = open(file_path, "rb")
     kwargs = dict(name = name, file = file)
 
     result = create(**kwargs)
-    print(result)
+    pprint.pprint(result)
