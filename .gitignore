@@ -1,0 +1,7 @@
+*.pyc
+*.debug
+
+session.shelve*
+
+/dist
+/src/story_api.egg-info
