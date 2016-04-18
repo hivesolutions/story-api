@@ -55,7 +55,10 @@ if __name__ == "__main__":
         raise appier.OperationalError(message = "No path defined or path invalid")
 
     file = open(file_path, "rb")
-    kwargs = dict(name = name, file = file)
+    try: file_ref = appier.FileTuple.from_file(file)
+    finally: file.close() 
+
+    kwargs = dict(name = name, file = file_ref)
 
     result = create(**kwargs)
     pprint.pprint(result)
