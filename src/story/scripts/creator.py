@@ -49,16 +49,18 @@ def create(*args, **kwargs):
 
 if __name__ == "__main__":
     name = appier.conf("NAME", "untitled")
+    mime = appier.conf("MIME", None)
     file_path = appier.conf("FILE_PATH", None)
 
     if not file_path or not os.path.exists(file_path):
         raise appier.OperationalError(message = "No path defined or path invalid")
 
-    file = open(file_path, "rb")
-    try: file_ref = appier.FileTuple.from_file(file)
-    finally: file.close() 
-
-    kwargs = dict(name = name, file = file_ref)
+    file_tuple = appier.FileTuple.from_path(
+        file_path,
+        name = name,
+        mime = mime
+    )
+    kwargs = dict(name = name, file = file_tuple)
 
     result = create(**kwargs)
     pprint.pprint(result)
