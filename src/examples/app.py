@@ -73,3 +73,5 @@ class StoryApp(appier.WebApp):
 if __name__ == "__main__":
     app = StoryApp()
     app.serve()
+else:
+    __path__ = []
