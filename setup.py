@@ -48,7 +48,7 @@ setuptools.setup(
     description = "Story API Client",
     license = "Apache License, Version 2.0",
     keywords = "story api",
-    url = "http://story_api.hive.pt",
+    url = "http://story-api.hive.pt",
     zip_safe = False,
     packages = [
         "story",
