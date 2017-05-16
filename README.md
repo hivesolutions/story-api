@@ -1,4 +1,4 @@
-# [Story API](http://story_api.hive.pt)
+# [Story API](http://story-api.hive.pt)
 
 API Python client for the Story service.
 
