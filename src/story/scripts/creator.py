@@ -44,7 +44,7 @@ import appier
 import story
 
 def create(*args, **kwargs):
-    api = story.Api()
+    api = story.API()
     return api.create_object(kwargs)
 
 if __name__ == "__main__":

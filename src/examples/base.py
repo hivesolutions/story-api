@@ -42,6 +42,6 @@ import appier
 import story
 
 def get_api():
-    return story.Api(
+    return story.API(
         key = appier.conf("STORY_KEY")
     )

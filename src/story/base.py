@@ -45,9 +45,9 @@ BASE_URL = "https://story.bemisc.com/api/"
 """ The default base url to be used when no other
 base url value is provided to the constructor """
 
-class Api(
-    appier.Api,
-    object.ObjectApi
+class API(
+    appier.API,
+    object.ObjectAPI
 ):
     """
     Implementation of the Story API specification
@@ -55,7 +55,7 @@ class Api(
     """
 
     def __init__(self, *args, **kwargs):
-        appier.Api.__init__(self, *args, **kwargs)
+        appier.API.__init__(self, *args, **kwargs)
         self.base_url = appier.conf("STORY_BASE_URL", BASE_URL)
         self.key = appier.conf("STORY_KEY", None)
         self.base_url = kwargs.get("base_url", BASE_URL)
