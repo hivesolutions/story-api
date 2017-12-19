@@ -42,8 +42,8 @@ import appier
 from . import object
 
 BASE_URL = "https://story.bemisc.com/api/"
-""" The default base url to be used when no other
-base url value is provided to the constructor """
+""" The default base URL to be used when no other
+base URL value is provided to the constructor """
 
 class API(
     appier.API,
