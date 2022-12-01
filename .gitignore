@@ -5,4 +5,4 @@ session.shelve*
 
 /dist
 /build
-/src/story_api.egg-info
+/src/story-api.egg-info
